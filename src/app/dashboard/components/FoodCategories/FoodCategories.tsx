@@ -14,25 +14,34 @@ export async function getFoodCategories(): Promise<Array<IFoodCategory>> {
 
 interface FoodCategoriesProps {
   categoryId?: string;
+  restaurantQuery?: string;
 }
 
-const FoodCategories = async ({ categoryId }: FoodCategoriesProps) => {
+const FoodCategories = async ({
+  categoryId,
+  restaurantQuery,
+}: FoodCategoriesProps) => {
   const categories = await getFoodCategories();
   const categoriesWithAll = [{ id: 0, name: "All" }, ...categories];
 
   return (
-    <div className="flex flex-row mt-10 text-sm font-medium text-gray-500">
+    <div className="flex flex-row font-medium text-gray-500">
       {categoriesWithAll.map((category) => (
         <Link
-          aria-selected={(category.id || undefined) === categoryId}
+          aria-selected={
+            (category.id || undefined) === (categoryId || undefined)
+          }
           key={category.id}
           data-id={category.id}
-          className="px-4 py-2
+          className="px-6 h-10 leading-10
           border-secondaryYellow border-y-2 border-l-2 last:border-r-2 last:rounded-r-xl first:rounded-l-xl
           aria-selected:bg-mainYellow aria-selected:text-black aria-selected:font-semibold"
           href={{
             pathname: "/dashboard",
-            query: { category: category.id ? category.id : undefined },
+            query: {
+              restaurant: restaurantQuery,
+              category: category.id ? category.id : undefined,
+            },
           }}
         >
           {category.name}
