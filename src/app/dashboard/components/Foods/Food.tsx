@@ -59,18 +59,24 @@ const Food = ({
       <div className="h-2/3 w-full relative">
         <Image src={imageUrl} alt={name} fill />
       </div>
-      <div className="p-6">
-        <p className="font-bold">{restaurant}</p>
-        <p className="p-4 text-xs space-x-6">
+      <div className="px-4">
+        <p className="font-bold py-4">{restaurant}</p>
+        <p className="text-xs space-x-2">
           {rating && (
-            <span>
+            <span className="bg-background p-2 rounded-lg">
               <span className="text-sm">★</span> {Number(rating).toFixed(1)}
             </span>
           )}
           {(maxCookTime || minCookTime) && (
-            <span>{compact([minCookTime, maxCookTime])?.join("-")} min</span>
+            <span className="bg-background p-2 rounded-lg">
+              {compact([minCookTime, maxCookTime])?.join("-")} min
+            </span>
           )}
-          {isNew && <span className="text-green-600 font-bold">New</span>}
+          {isNew && (
+            <span className="text-green-600 font-bold bg-background p-2 rounded-lg">
+              New
+            </span>
+          )}
         </p>
       </div>
     </div>

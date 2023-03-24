@@ -9,7 +9,7 @@ interface PageProps {
 const DashboardPage = ({ searchParams }: PageProps) => {
   const { category, restaurant } = searchParams;
   return (
-    <div className="mx-10 mt-10">
+    <div className="p-10">
       <SearchBar categoryId={category} />
       {/* @ts-expect-error Async Server Component */}
       <FoodCategories

@@ -25,7 +25,7 @@ const FoodCategories = async ({
   const categoriesWithAll = [{ id: 0, name: "All" }, ...categories];
 
   return (
-    <div className="flex flex-row font-medium text-gray-500">
+    <div className="flex flex-row font-medium text-gray-500 py-10">
       {categoriesWithAll.map((category) => (
         <Link
           aria-selected={
