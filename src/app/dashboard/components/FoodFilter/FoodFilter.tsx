@@ -17,7 +17,7 @@ interface FoodCategoriesProps {
   restaurantQuery?: string;
 }
 
-const FoodCategories = async ({
+const FoodFilter = async ({
   categoryId,
   restaurantQuery,
 }: FoodCategoriesProps) => {
@@ -51,4 +51,4 @@ const FoodCategories = async ({
   );
 };
 
-export default FoodCategories;
+export default FoodFilter;

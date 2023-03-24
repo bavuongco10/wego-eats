@@ -1,4 +1,4 @@
-import FoodCategories from "@/app/dashboard/components/FoodCategories/FoodCategories";
+import FoodFilter from "@/app/dashboard/components/FoodFilter/FoodFilter";
 import Foods from "@/app/dashboard/components/Foods/Foods";
 import SearchBar from "@/app/dashboard/components/SearchBar/SearchBar";
 
@@ -12,7 +12,7 @@ const DashboardPage = ({ searchParams }: PageProps) => {
     <div className="p-10">
       <SearchBar categoryId={category} />
       {/* @ts-expect-error Async Server Component */}
-      <FoodCategories
+      <FoodFilter
         categoryId={searchParams.category}
         restaurantQuery={restaurant}
       />
