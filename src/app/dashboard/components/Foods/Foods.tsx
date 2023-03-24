@@ -1,19 +1,4 @@
-const Gift = () => (
-  <svg
-    className="w-5 h-5 text-white"
-    aria-hidden="true"
-    fill="currentColor"
-    viewBox="0 0 20 20"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      fill-rule="evenodd"
-      d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z"
-      clip-rule="evenodd"
-    ></path>
-    <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path>
-  </svg>
-);
+import Food from "@/app/dashboard/components/Foods/Food";
 
 export interface IFood {
   id: number;
@@ -55,23 +40,11 @@ const Foods = async ({ categoryId, restaurantQuery }: FoodsProps) => {
 
     return foundCategory && foundRestaurant;
   });
+
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-3 gap-4 font-medium">
       {processedFoods?.map((food) => (
-        <div
-          key={food.id}
-          className="relative overflow-hidden rounded-xl bg-white drop-shadow-lg"
-        >
-          <div className="absolute bg-blue-400 w-12 h-8 rounded-br-2xl flex justify-center items-center">
-            <Gift />
-          </div>
-          <img src={food.imageUrl} />
-          <p>{food.restaurant}</p>
-          <span>★ {Number(food.rating).toFixed(1)}</span>
-          <span>
-            {food.minCookTime}-{food.maxCookTime}
-          </span>
-        </div>
+        <Food key={food.id} {...food} />
       ))}
     </div>
   );
